@@ -32,7 +32,7 @@ d1 = Deck()
 dealerCards = [d1.pick_card(), d1.pick_card()]
 playerCards = [d1.pick_card(), d1.pick_card()]
 
-print(f"Your hand is the {playerCards[0]} and the {playerCards[1]}")
 print(f"The dealer has the {dealerCards[1]}")
+print(f"Your hand is the {playerCards[0]} and the {playerCards[1]}")
 
 d1.check_deck()

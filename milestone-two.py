@@ -19,7 +19,6 @@ class Deck():
         print (len(self.fullDeck))
 
 
-
 totalChips = input("How many chips do you have? ")
 bet = input("What is your bet? ")
 
@@ -29,10 +28,27 @@ while(bet>totalChips):
 
 
 d1 = Deck()
+cardSum = 0
+
 dealerCards = [d1.pick_card(), d1.pick_card()]
 playerCards = [d1.pick_card(), d1.pick_card()]
+# playerCards = ["King of Diamonds", "2 of Spades"]
+
 
 print(f"The dealer has the {dealerCards[1]}")
 print(f"Your hand is the {playerCards[0]} and the {playerCards[1]}")
 
+
+def find_sums(playerCards, cardSum = 0):
+    for card in playerCards:
+        if not card.find("Jack") or not card.find("King") or not card.find("Queen")or not card.find("Ace"):
+            cardSum += 10
+        else:
+            value = int(card[0])
+            if value == 1:
+                value = 10
+            cardSum += value
+    print(cardSum)
+
 d1.check_deck()
+find_sums(playerCards, cardSum)

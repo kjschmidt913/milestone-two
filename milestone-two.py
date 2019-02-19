@@ -28,8 +28,11 @@ while(bet>totalChips):
     bet = input("What is your bet? ")
 
 
-
 d1 = Deck()
-card1 = d1.pick_card()
+dealerCards = [d1.pick_card(), d1.pick_card()]
+playerCards = [d1.pick_card(), d1.pick_card()]
+
+print(f"Your hand is the {playerCards[0]} and the {playerCards[1]}")
+print(f"The dealer has the {dealerCards[1]}")
 
 d1.check_deck()

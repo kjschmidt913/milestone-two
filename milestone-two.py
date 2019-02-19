@@ -18,6 +18,17 @@ class Deck():
     def check_deck(self):
         print (len(self.fullDeck))
 
+
+
+totalChips = input("How many chips do you have? ")
+bet = input("What is your bet? ")
+
+while(bet>totalChips):
+    print("You can't bet more than you have. Try again.")
+    bet = input("What is your bet? ")
+
+
+
 d1 = Deck()
 card1 = d1.pick_card()
 

@@ -10,16 +10,15 @@ class Deck():
                 self.fullDeck.append("%s of %s" % (rank, suite))
 
     def pick_card(self):
-        card_key = random.randint(0, len(self.fullDeck)-1)  
-        new_card = self.fullDeck[card_key] 
-        del self.fullDeck[card_key]  
+        card_index = random.randint(0, len(self.fullDeck)-1)  
+        new_card = self.fullDeck[card_index] 
+        del self.fullDeck[card_index]  
         return new_card
 
-    def missing_card(self):
-        print (self.fullDeck)
+    def check_deck(self):
+        print (len(self.fullDeck))
 
 d1 = Deck()
 card1 = d1.pick_card()
 
-print(d1.fullDeck)
-
+d1.check_deck()

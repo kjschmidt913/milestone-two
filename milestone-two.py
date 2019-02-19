@@ -48,7 +48,20 @@ def find_sums(playerCards, cardSum = 0):
             if value == 1:
                 value = 10
             cardSum += value
-    print(cardSum)
+
+
+#if there's an ace in playercards and the sum is <= 20, add 1.
+#else, subtract 9
+    
+    return cardSum
 
 d1.check_deck()
-find_sums(playerCards, cardSum)
+playerSum = find_sums(playerCards, cardSum)
+print(playerSum)
+
+if playerSum > 21:
+    print("It's a bust!")
+elif playerSum < 21:
+    print("Would you like to hit?")
+else:
+    print("You got 21!")

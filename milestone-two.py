@@ -41,18 +41,18 @@ print(f"Your hand is the {playerCards[0]} and the {playerCards[1]}")
 
 def find_sums(playerCards, cardSum = 0):
     for card in playerCards:
-        if not card.find("Jack") or not card.find("King") or not card.find("Queen")or not card.find("Ace"):
+        if not card.find("Jack") or not card.find("King") or not card.find("Queen"):
             cardSum += 10
-        else:
+        elif card.find("Ace"):
             value = int(card[0])
             if value == 1:
                 value = 10
             cardSum += value
-    if playerCards[0].find("Ace") or playerCards[1].find("Ace"):
-        if cardSum <= 20:
-            cardSum + 1
         else:
-            cardSum -= 9
+            if cardSum <= 20:
+                cardSum + 1
+            else:
+                cardSum -= 9
 
     return cardSum
 

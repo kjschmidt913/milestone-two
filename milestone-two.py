@@ -61,13 +61,12 @@ def check_sum(playerSum):
     if playerSum > 21:
         print("It's a bust!")
     elif playerSum < 21:
-        print("Would you like to hit?")
+        hit = input("Would you like to hit? (Type Y or N) ")
+        return hit
     else:
         print("You got 21!")
 
 d1.check_deck()
 playerSum = find_sums(playerCards, cardSum)
 print(playerSum)
-check_sum(playerSum)
-
-
+hit = check_sum(playerSum)

@@ -31,8 +31,8 @@ d1 = Deck()
 cardSum = 0
 
 dealerCards = [d1.pick_card(), d1.pick_card()]
-playerCards = [d1.pick_card(), d1.pick_card()]
-# playerCards = ["King of Diamonds", "2 of Spades"]
+# playerCards = [d1.pick_card(), d1.pick_card()]
+playerCards = ["King of Diamonds", "Ace of Spades"]
 
 
 print(f"The dealer has the {dealerCards[1]}")
@@ -48,11 +48,12 @@ def find_sums(playerCards, cardSum = 0):
             if value == 1:
                 value = 10
             cardSum += value
+    if playerCards[0].find("Ace") or playerCards[1].find("Ace"):
+        if cardSum <= 20:
+            cardSum + 1
+        else:
+            cardSum -= 9
 
-
-#if there's an ace in playercards and the sum is <= 20, add 1.
-#else, subtract 9
-    
     return cardSum
 
 d1.check_deck()

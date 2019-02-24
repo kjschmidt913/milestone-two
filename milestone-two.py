@@ -20,10 +20,11 @@ class Deck():
 
 class Bets():
     def __init__(self, total):
-        self.total = total
+        self.total= int(total)
     
     def set_bet(self):
-        self.bet = input("What is your bet? ")
+        bet = input("What is your bet? ")
+        self.bet = int(bet)
     
     def new_total(self):
         self.total -= self.bet
@@ -53,16 +54,16 @@ def dealerRevealCards():
     print(f"The dealer has the {dealerCards[0]} and the {dealerCards[1]} for a total of {dealerSum}")
     if dealerSum <=21:
         if (21 - dealerSum) < (21-playerSum):
-            print("The dealer wins!")
+            print("The dealer wins this round!")
         else:
-            print("You win!")
+            print("You win this round!")
     else:
-        print("You win!")
+        print("You win this round!")
 
 
 def check_sum(playerSum):
     if playerSum > 21:
-        print("It's a bust!")
+        print("It's a bust! You lose this round.")
         return False
     elif playerSum < 21:
         flag = False
@@ -80,7 +81,7 @@ def check_sum(playerSum):
             else:
                 print("Not valid response. Try again.")
     else:
-        print("You got 21!")
+        print("You got 21! You win this round.")
         return False
 
 
@@ -89,7 +90,7 @@ betting = Bets(totalChips)
 
 while (betting.total > 0):
     betting.set_bet()
-    while(betting.bet>totalChips):
+    while(betting.bet>betting.total):
         print("You can't bet more than you have. Try again.")
         bet = input("What is your bet? ")
 

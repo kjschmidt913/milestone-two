@@ -86,25 +86,28 @@ def check_sum(playerSum):
 
 totalChips = input("How many chips do you have? ")
 betting = Bets(totalChips)
-betting.set_bet()
 
-while(betting.bet>totalChips):
-    print("You can't bet more than you have. Try again.")
-    bet = input("What is your bet? ")
+while (betting.total > 0):
+    betting.set_bet()
 
-
-d1 = Deck()
-cardSum = 0
-
-dealerCards = [d1.pick_card(), d1.pick_card()]
-playerCards = [d1.pick_card(), d1.pick_card()]
+    while(betting.bet>totalChips):
+        print("You can't bet more than you have. Try again.")
+        bet = input("What is your bet? ")
 
 
-print(f"The dealer has the {dealerCards[1]}")
-print(f"Your hand is the {playerCards[0]} and the {playerCards[1]}")
+    d1 = Deck()
+    cardSum = 0
 
-game = True
+    dealerCards = [d1.pick_card(), d1.pick_card()]
+    playerCards = [d1.pick_card(), d1.pick_card()]
 
-while (game):
-    playerSum = find_sums(playerCards)
-    game = check_sum(playerSum)
+    print(f"The dealer has the {dealerCards[1]}")
+    print(f"Your hand is the {playerCards[0]} and the {playerCards[1]}")
+
+    game = True
+
+    while (game):
+        playerSum = find_sums(playerCards)
+        game = check_sum(playerSum)
+
+print("You're out of chips!")

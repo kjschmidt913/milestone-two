@@ -18,6 +18,16 @@ class Deck():
     def check_deck(self):
         print (len(self.fullDeck))
 
+class Bets():
+    def __init__(self, total):
+        self.total = total
+    
+    def set_bet(self):
+        self.bet = input("What is your bet? ")
+    
+    def new_total(self):
+        self.total -= self.bet
+
 
 def find_sums(playerCards):
     cardSum = 0
@@ -75,9 +85,10 @@ def check_sum(playerSum):
 
 
 totalChips = input("How many chips do you have? ")
-bet = input("What is your bet? ")
+betting = Bets(totalChips)
+betting.set_bet()
 
-while(bet>totalChips):
+while(betting.bet>totalChips):
     print("You can't bet more than you have. Try again.")
     bet = input("What is your bet? ")
 

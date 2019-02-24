@@ -32,7 +32,6 @@ cardSum = 0
 
 dealerCards = [d1.pick_card(), d1.pick_card()]
 playerCards = [d1.pick_card(), d1.pick_card()]
-# playerCards = ["King of Diamonds", "Ace of Spades"]
 
 
 print(f"The dealer has the {dealerCards[1]}")
@@ -58,7 +57,16 @@ def find_sums(playerCards, cardSum = 0):
     return cardSum
 
 def dealerRevealCards():
-    pass
+    dealerSum = find_sums(dealerCards, 0)
+    print(f"The dealer has the {dealerCards[0]} and the {dealerCards[1]} for a total of {dealerSum}")
+    if dealerSum <=21:
+        if (21 - dealerSum) < (21-playerSum):
+            print("The dealer wins!")
+        else:
+            print("You win!")
+    else:
+        print("You win!")
+    
 
 def check_sum(playerSum):
     if playerSum > 21:
@@ -79,9 +87,7 @@ def check_sum(playerSum):
     else:
         print("You got 21!")
 
-d1.check_deck()
 playerSum = find_sums(playerCards, cardSum)
 check_sum(playerSum)
 playerSum = find_sums(playerCards)
-print(playerSum)
 check_sum(playerSum)

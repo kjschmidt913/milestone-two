@@ -19,26 +19,8 @@ class Deck():
         print (len(self.fullDeck))
 
 
-totalChips = input("How many chips do you have? ")
-bet = input("What is your bet? ")
-
-while(bet>totalChips):
-    print("You can't bet more than you have. Try again.")
-    bet = input("What is your bet? ")
-
-
-d1 = Deck()
-cardSum = 0
-
-dealerCards = [d1.pick_card(), d1.pick_card()]
-playerCards = [d1.pick_card(), d1.pick_card()]
-
-
-print(f"The dealer has the {dealerCards[1]}")
-print(f"Your hand is the {playerCards[0]} and the {playerCards[1]}")
-
-
-def find_sums(playerCards, cardSum = 0):
+def find_sums(playerCards):
+    cardSum = 0
     for card in playerCards:
         if not card.find("Jack") or not card.find("King") or not card.find("Queen") or not card.find("Ace"):
             if not card.find("Ace"):
@@ -57,7 +39,7 @@ def find_sums(playerCards, cardSum = 0):
     return cardSum
 
 def dealerRevealCards():
-    dealerSum = find_sums(dealerCards, 0)
+    dealerSum = find_sums(dealerCards)
     print(f"The dealer has the {dealerCards[0]} and the {dealerCards[1]} for a total of {dealerSum}")
     if dealerSum <=21:
         if (21 - dealerSum) < (21-playerSum):
@@ -66,11 +48,12 @@ def dealerRevealCards():
             print("You win!")
     else:
         print("You win!")
-    
+
 
 def check_sum(playerSum):
     if playerSum > 21:
         print("It's a bust!")
+        return False
     elif playerSum < 21:
         flag = False
         while not flag:
@@ -79,15 +62,38 @@ def check_sum(playerSum):
                 flag = True
                 playerCards.append(d1.pick_card())
                 print(f"You got the {playerCards[-1]}")
+                return True
             elif hit == "N":
                 flag = True
                 dealerRevealCards()
+                return False
             else:
                 print("Not valid response. Try again.")
     else:
         print("You got 21!")
+        return False
 
-playerSum = find_sums(playerCards, cardSum)
-check_sum(playerSum)
-playerSum = find_sums(playerCards)
-check_sum(playerSum)
+
+totalChips = input("How many chips do you have? ")
+bet = input("What is your bet? ")
+
+while(bet>totalChips):
+    print("You can't bet more than you have. Try again.")
+    bet = input("What is your bet? ")
+
+
+d1 = Deck()
+cardSum = 0
+
+dealerCards = [d1.pick_card(), d1.pick_card()]
+playerCards = [d1.pick_card(), d1.pick_card()]
+
+
+print(f"The dealer has the {dealerCards[1]}")
+print(f"Your hand is the {playerCards[0]} and the {playerCards[1]}")
+
+game = True
+
+while (game):
+    playerSum = find_sums(playerCards)
+    game = check_sum(playerSum)

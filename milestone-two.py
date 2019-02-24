@@ -31,8 +31,8 @@ d1 = Deck()
 cardSum = 0
 
 dealerCards = [d1.pick_card(), d1.pick_card()]
-# playerCards = [d1.pick_card(), d1.pick_card()]
-playerCards = ["King of Diamonds", "Ace of Spades"]
+playerCards = [d1.pick_card(), d1.pick_card()]
+# playerCards = ["King of Diamonds", "Ace of Spades"]
 
 
 print(f"The dealer has the {dealerCards[1]}")
@@ -57,16 +57,31 @@ def find_sums(playerCards, cardSum = 0):
 
     return cardSum
 
+def dealerRevealCards():
+    pass
+
 def check_sum(playerSum):
     if playerSum > 21:
         print("It's a bust!")
     elif playerSum < 21:
-        hit = input("Would you like to hit? (Type Y or N) ")
-        return hit
+        flag = False
+        while not flag:
+            hit = input("Would you like to hit? (Type Y or N) ")
+            if hit == "Y":
+                flag = True
+                playerCards.append(d1.pick_card())
+                print(f"You got the {playerCards[-1]}")
+            elif hit == "N":
+                flag = True
+                dealerRevealCards()
+            else:
+                print("Not valid response. Try again.")
     else:
         print("You got 21!")
 
 d1.check_deck()
 playerSum = find_sums(playerCards, cardSum)
+check_sum(playerSum)
+playerSum = find_sums(playerCards)
 print(playerSum)
-hit = check_sum(playerSum)
+check_sum(playerSum)

@@ -26,8 +26,11 @@ class Bets():
         bet = input("What is your bet? ")
         self.bet = int(bet)
     
-    def new_total(self):
+    def lost(self):
         self.total -= self.bet
+    
+    def won(self):
+        self.total += self.bet
 
 
 def find_sums(playerCards):
@@ -55,15 +58,19 @@ def dealerRevealCards():
     if dealerSum <=21:
         if (21 - dealerSum) < (21-playerSum):
             print("The dealer wins this round!")
+            betting.lost()
         else:
             print("You win this round!")
+            betting.won()
     else:
         print("You win this round!")
+        betting.won()
 
 
 def check_sum(playerSum):
     if playerSum > 21:
         print("It's a bust! You lose this round.")
+        betting.lost()
         return False
     elif playerSum < 21:
         flag = False
@@ -82,6 +89,7 @@ def check_sum(playerSum):
                 print("Not valid response. Try again.")
     else:
         print("You got 21! You win this round.")
+        betting.won()
         return False
 
 

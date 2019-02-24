@@ -32,7 +32,6 @@ class Bets():
     def won(self):
         self.total += self.bet
 
-
 def find_sums(playerCards):
     cardSum = 0
     for card in playerCards:
@@ -66,7 +65,6 @@ def dealerRevealCards():
         print("You win this round!")
         betting.won()
 
-
 def check_sum(playerSum):
     if playerSum > 21:
         print("It's a bust! You lose this round.")
@@ -92,7 +90,7 @@ def check_sum(playerSum):
         betting.won()
         return False
 
-
+#Game flow starts here
 totalChips = input("How many chips do you have? ")
 betting = Bets(totalChips)
 

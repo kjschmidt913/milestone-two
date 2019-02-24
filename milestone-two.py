@@ -89,11 +89,9 @@ betting = Bets(totalChips)
 
 while (betting.total > 0):
     betting.set_bet()
-
     while(betting.bet>totalChips):
         print("You can't bet more than you have. Try again.")
         bet = input("What is your bet? ")
-
 
     d1 = Deck()
     cardSum = 0
@@ -105,9 +103,10 @@ while (betting.total > 0):
     print(f"Your hand is the {playerCards[0]} and the {playerCards[1]}")
 
     game = True
-
     while (game):
         playerSum = find_sums(playerCards)
         game = check_sum(playerSum)
+    
+    print(f"You have {betting.total} chips left to play.")
 
 print("You're out of chips!")

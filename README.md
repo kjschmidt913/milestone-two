@@ -1,7 +1,7 @@
-# milestone-two
-The second milestone project for Udemy's python bootcamp. 
+# Milestone Two - BlackJack Game
+The second milestone project for [Udemy's Complete Python Bootcamp: Go from zero to hero in Python 3](https://www.udemy.com/complete-python-bootcamp/). 
 
-In this milestone project I created a Complete BlackJack Card Game in Python.
+This project is a BlackJack card game.
 
 ## The requirements:
 
